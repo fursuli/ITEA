@@ -32,19 +32,61 @@ class Stack:
             return print('Element is not in the stack, anyway')
 
 
-stck1 = Stack()
-stck1.add_element(4)
-stck1.add_element(5)
-stck1.add_element(8)
-stck1.add_element(2)
-print(stck1.get_all_stack())
-stck1.remove_element(0)
-print(stck1.get_all_stack())
-print(stck1.pop_element(1))
+# stck1 = Stack()
+# stck1.add_element(4)
+# stck1.add_element(5)
+# stck1.add_element(8)
+# stck1.add_element(2)
+# print(stck1.get_all_stack())
+# stck1.remove_element(0)
+# print(stck1.get_all_stack())
+# print(stck1.pop_element(1))
 
 
 class Queue:
-    pass
+    """ First-In-First-Off """
+    _queue = []
+
+    def __init__(self, item):
+        self._item = item
+        Queue._queue.append(item)
+
+    def get_queue(self):
+        return Queue._queue
+
+    def append_to_queue(self, *args):
+        for arg in args:
+            Queue._queue.append(arg)
+        return Queue._queue
+
+    def remove_item(self, item):
+
+        queue = Queue._queue
+        if item in queue:
+            queue.remove(item)
+        else:
+            print(f'{item} is not in queue.')
+
+        result = queue
+
+        return result
+
+    def item_off(self):
+        queue = Queue._queue
+        queue.remove(queue[0])
+        result = queue
+        return result
+
+
+q = Queue('first')
+q.append_to_queue('second', 3, 'ff')
+q.append_to_queue(999)
+print(q.remove_item(999))
+print(q.remove_item(0))
+print(q.get_queue())
+print(q.item_off())
+print(q.item_off())
+
 
 
 class ComplexNumber:
